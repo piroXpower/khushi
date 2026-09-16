@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Khushi | Forever & Always</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #2b0b1a, #0d0107);
+      color: #fff;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .heart-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-heart {
+      position: absolute;
+      bottom: -20px;
+      color: rgba(255, 77, 109, 0.4);
+      animation: floatUp 8s linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      80% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: #e0b0bc;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 117, 140, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card h3 {
+      color: #ff758c;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p {
+      color: #f1d5de;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .proposal-box {
+      margin-top: 48px;
+      padding: 36px 20px;
+      background: rgba(255, 77, 109, 0.08);
+      border: 1px solid rgba(255, 77, 109, 0.4);
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .proposal-box h2 {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .proposal-box p {
+      color: #e0b0bc;
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      min-height: 70px;
+    }
+
+    .btn {
+      padding: 14px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+    }
+
+    .btn-yes:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(255, 65, 108, 0.7);
+    }
+
+    .btn-no {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ddd;
+      position: absolute;
+      transition: top 0.2s ease, left 0.2s ease;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 10;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #1a0812;
+      border: 1px solid #ff4d6d;
+      border-radius: 20px;
+      max-width: 480px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 77, 109, 0.5);
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-content h2 {
+      color: #ff758c;
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .modal-content p {
+      color: #f1d5de;
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart-bg" id="heartContainer"></div>
+
+  <div class="container">
+    <h1>Khushi</h1>
+    <p class="subtitle">There is an effortless pull whenever you're around—magnetic, breathtaking, and completely impossible to ignore.</p>
+
+    <div class="card">
+      <h3>✨ Irresistible Presence</h3>
+      <p>
+        Every time you walk into a room, the air shifts. You carry an intoxicating mix of grace, warmth, and quiet confidence that commands every bit of my attention.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🔥 The Way You Look At Me</h3>
+      <p>
+        One glance from you cuts straight through the noise. It lingers longer than words ever could, making my heart race and leaving every thought centered entirely on you.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>💫 Unapologetically Captivating</h3>
+      <p>
+        It’s your laugh, the fire in your eyes, and the sheer charm you don’t even realize you hold. Being close to you is addicting, and staying away simply isn't an option anymore.
+      </p>
+    </div>
+
+    <div class="proposal-box">
+      <h2>Be Mine?</h2>
+      <p>Let's make this official. Step into this with me and let's create something unforgettable.</p>
+      
+      <div class="button-group" id="btnContainer">
+        <button class="btn btn-yes" onclick="handleYes()">Yes, Absolutely</button>
+        <button class="btn btn-no" id="noBtn" onmouseover="dodgeNo()" onclick="dodgeNo()">No</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <h2>It’s Official ❤️</h2>
+      <p>You just made the absolute best decision. Get ready for endless laughter, unforgettable moments, and all the devotion you deserve.</p>
+    </div>
+  </div>
+
+  <script>
+    // Floating hearts generation
+    const container = document.getElementById('heartContainer');
+    const heartSymbols = ['❤️', '💖', '✨', '🔥'];
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 9000);
+    }
+
+    setInterval(createHeart, 450);
+
+    // Evasive "No" button logic
+    const noBtn = document.getElementById('noBtn');
+    const btnContainer = document.getElementById('btnContainer');
+
+    function dodgeNo() {
+      const xMax = 180;
+      const yMax = 70;
+      const randomX = (Math.random() - 0.5) * (xMax * 2);
+      const randomY = (Math.random() - 0.5) * (yMax * 2);
+
+      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    function handleYes() {
+      document.getElementById('successModal').style.display = 'flex';
+    }
+  </script>
+</body>
+  </html>
+    
